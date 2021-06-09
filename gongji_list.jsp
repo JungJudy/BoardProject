@@ -7,6 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="./css/gongji_list.css">
 
@@ -46,7 +47,7 @@
 	} else {
 		
 
-		ResultSet rset = stmt.executeQuery("select * from gongji;");
+		ResultSet rset = stmt.executeQuery("select * from gongji order by id desc;");
 	
 %>
 <div class="table-outer">

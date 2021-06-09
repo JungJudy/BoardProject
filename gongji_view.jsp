@@ -6,6 +6,7 @@
 <head>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/gongji_view.css">
 </head>
@@ -24,6 +25,8 @@
 	ResultSet rset = stmt.executeQuery("select * from gongji where id=" + id + ";");
 	
 	while(rset.next()) {
+		
+
 		out.println("<tr>");
 		out.println("<td><b>번호</b></td>");
 		out.println("<td>" + id + "</td>");
@@ -38,7 +41,7 @@
 		out.println("</tr>");
 		out.println("<tr>");
 		out.println("<td><b>내용</b></td>");
-		out.println("<td>" + rset.getString(4) + "</td>");
+		out.println("<td>" + rset.getString(4).replace("\r\n","<br>") + "</td>");
 		out.println("</tr>");
 	}
 	rset.close();

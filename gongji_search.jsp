@@ -59,7 +59,7 @@
     </div>
     <%
         } else {
-            ResultSet rset = stmt.executeQuery("select * from gongji where title like '%" + title +"%';");
+            ResultSet rset = stmt.executeQuery("select * from gongji where title like '%" + title +"%' order by id desc;");
     %>
     <div class="table-outer">
     <table width=650 border=1 cellspacing=0 cellpadding=5>
