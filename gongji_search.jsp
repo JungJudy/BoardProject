@@ -82,7 +82,7 @@
 
     </table>
     <div id="btnArea2">
-        <button id="goToListBtn2" onclick="location.href='gongji_list.jsp'">전체목록보기</button>
+        <button id="goToListBtn2" onclick="location.href='gongji_list.jsp?current_page=1'">전체목록보기</button>
     </div>
     <input type="text" id="search" name="search" placeholder="제목 검색"><button onclick="search()">검색</button>
 

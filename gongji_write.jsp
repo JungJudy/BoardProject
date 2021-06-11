@@ -1,7 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="java.sql.*,javax.sql.*,java.io.*, java.net.*" %> 
-<%@ page import="java.text.SimpleDateFormat,java.util.Date" %>
 
 <html>
 <head>
@@ -50,7 +49,7 @@
 
 	</div>
 	<div id="btnArea">
-		<button id="goToListBtn" onclick="location.href='gongji_list.jsp'">리스트보기</button>
+		<button id="goToListBtn" onclick="location.href='gongji_list.jsp?current_page=1'">리스트보기</button>
 	</div>
 </div>
 

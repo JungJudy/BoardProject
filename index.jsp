@@ -13,7 +13,7 @@
 
     <script>
         function checkPW() {
-            location.href="gongji_list.jsp";
+            location.href="gongji_list.jsp?current_page=1";
         }
     </script>
 </head>

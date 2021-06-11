@@ -32,7 +32,7 @@
 	<p>게시글 삭제가 완료되었습니다.</p>
 </div>
 <div id="btnArea">
-	<button id="goToListBtn" onclick="location.href='gongji_list.jsp'">리스트보기</button>
+	<button id="goToListBtn" onclick="location.href='gongji_list.jsp?current_page=1'">리스트보기</button>
 </div>
 </div>
 

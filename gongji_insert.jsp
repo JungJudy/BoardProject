@@ -8,6 +8,7 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="./css/gongji_insert.css">
 
 <script>
@@ -22,6 +23,42 @@
 			}
 		}
 	
+	$(function() {
+		var now = new Date();
+		var year = now.getFullYear();
+		
+		var month = now.getMonth() + 1;
+		if (month < 10) {
+			month = "0" + month;
+		}
+		
+		var date = now.getDate();
+		if (date < 10) {
+			date = "0" + date;
+		}
+
+		var hours = now.getHours();
+		if (hours < 10) {
+			hours = "0" + hours;
+		}
+
+		var minutes = now.getMinutes();
+		if (minutes < 10) {
+			minutes = "0" + minutes;
+		}
+
+		var seconds = now.getSeconds();
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		}
+		var today = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+		
+		$("#td_date").prepend(today + "<input type=hidden name='date' value='" + today + "'>");
+		
+
+	});
+
+		
 	
 </script>
 
@@ -41,16 +78,11 @@
 			</tr>
 			<tr>
 				<td><b>제목</b></td>
-				<td><input type=text name=title id=title size=70 maxlength=70 placeholder="제목을 입력해주세요"></td>
+				<td><input type=text name=title id=title size=70 maxlength=20 placeholder="제목을 입력해주세요"></td>
 			</tr>
 			<tr>
 				<td>일자</td>
-<%
-	Date dt = new Date();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	String today = sdf.format(dt);
-%>
-				<td><%=today%><input type=hidden name=date value='<%=today%>'></td>
+				<td id="td_date"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
@@ -60,7 +92,7 @@
 		<table>
 			<tr>
 				<td width=600></td>
-				<td><input type=button value="취소" OnClick="location.href='gongji_list.jsp'"></td>
+				<td><input type=button value="취소" OnClick="location.href='gongji_list.jsp?current_page=1'"></td>
 				<td><input type=button value="쓰기" OnClick="submitForm('write')"></td>
 			</tr>
 		</table>

@@ -1,4 +1,4 @@
-p, table, input, button, tr, td {
+p, table, input, button, tr, td, a {
     font-family: 'Jua', sans-serif, 'ZCOOL KuaiLe', cursive ;
     }
 
@@ -15,3 +15,26 @@ body {
     height: fit-content;
 }
 
+#b {
+    color: tomato;
+}
+
+#start, #end {
+    color: #949598;
+}
+
+#pn {
+    color: #5A5B61
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}

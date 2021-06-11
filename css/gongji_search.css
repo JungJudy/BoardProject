@@ -45,3 +45,15 @@ body{
     color: rgb(66, 66, 66);
     float: right;
    }
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}

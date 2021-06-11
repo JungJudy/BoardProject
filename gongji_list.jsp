@@ -46,8 +46,6 @@
 		
 	} else {
 		
-
-		ResultSet rset = stmt.executeQuery("select * from gongji order by id desc;");
 	
 %>
 <div class="table-outer">
@@ -59,8 +57,61 @@
 	</tr>
 
 <%
-	Integer totalCnt = gongji_is;
-	Integer fromPT = 0;
+	Integer totalCnt = gongji_is; //총게시글 수
+	Integer CntLIst = 10; //한 페이지에 표시될 게시글 수
+	Integer totalPage = totalCnt/CntLIst; //총 페이지 수
+
+	if (totalCnt % CntLIst > 0) {
+		totalPage++;
+	}
+
+	Integer current_page = 1; //현재페이지
+	current_page = Integer.parseInt(request.getParameter("current_page"));
+	Integer countPage = 10; //하단에 표시될 페이지 수
+
+	if (totalPage < current_page) {
+		current_page = totalPage;
+	}
+
+	Integer startPage = ((current_page - 1) / countPage) * countPage + 1; //시작페이지
+	Integer endPage = startPage + countPage - 1; //끝 페이지
+
+	if (endPage > totalPage) {
+		endPage = totalPage;
+	}
+
+	//첫페이지
+	out.println("<a href=\"?current_page=1\" id='start'>   <<   </a>");
+	
+	//이전페이지
+	if (current_page == 1) {
+		out.println("<a href=\"?current_page=" + (current_page) +  "\" id='pn'>  <  </a>");
+	} else {
+		out.println("<a href=\"?current_page=" + (current_page - 1) +  "\" id='pn'>  <  </a>");
+	}
+	
+	//페이지들
+	for (int iCnt = startPage; iCnt <= endPage; iCnt++) {
+		if (iCnt == current_page) {
+			out.println("<b id='b'>" + iCnt +"</b>");
+		} else {
+			out.println("<a href='?current_page=" + iCnt + "'> " + iCnt + " </a>");
+		}
+		
+	} 
+
+	//다음페이지
+	if (current_page == totalPage) {
+		out.println("<a href=\"?current_page=" + (current_page) + "\" id='pn'>  >  </a>");
+	} else {
+		out.println("<a href=\"?current_page=" + (current_page + 1) + "\" id='pn'>  >  </a>");
+	}
+
+	//끝페이지
+	out.println("<a href=\"?current_page=" + totalPage + "\" id='end'>   >>   </a>");
+	
+
+	ResultSet rset = stmt.executeQuery("select * from gongji order by id desc limit " + ((current_page - 1) * CntLIst) + "," + CntLIst + ";");
 
 		while(rset.next()) {
 			out.println("<tr align=center>");

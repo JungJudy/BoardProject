@@ -52,7 +52,7 @@
 	<table>
 		<tr>
 			<td width=550></td>
-			<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp'"></td>
+			<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp?current_page=1'"></td>
 			<td><input type=button value="수정" OnClick="location.href='gongji_update.jsp?id=<%=id%>'"></td>
 		</tr>
 	</table>

@@ -20,7 +20,40 @@
 			}
 			fm.submit();
 		}
+	$(function() {
+		var now = new Date();
+		var year = now.getFullYear();
 		
+		var month = now.getMonth() + 1;
+		if (month < 10) {
+			month = "0" + month;
+		}
+		
+		var date = now.getDate();
+		if (date < 10) {
+			date = "0" + date;
+		}
+
+		var hours = now.getHours();
+		if (hours < 10) {
+			hours = "0" + hours;
+		}
+
+		var minutes = now.getMinutes();
+		if (minutes < 10) {
+			minutes = "0" + minutes;
+		}
+
+		var seconds = now.getSeconds();
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		}
+		var today = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+		
+		$("#td_date").append("<input type='text' name='date' id='date' size=70 maxlength=70 value='" + today + "' readonly>");
+		
+
+	});
 	</script>
 </head>
 <body>
@@ -45,10 +78,6 @@
 	conn.close();
 
 
-	Date dt = new Date();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	String update_today = sdf.format(dt);
-	
 %>
 <form method="post" name="fm">
 	<table width="650" border="1" cellspacing="0" cellpadding="5">
@@ -58,11 +87,11 @@
 		</tr>
 		<tr>
 			<td><b>제목</b></td>
-			<td><input type="text" name="title" size=70 maxlength=70 minlength="3" value="<%=title%>"></td>
+			<td><input type="text" name="title" size=70 maxlength=20 minlength="3" value="<%=title%>"></td>
 		</tr>
 		<tr>
 			<td><b>일자</b></td>
-			<td><input type="text" name="date" size=70 maxlength=70 value='<%=update_today%>' readonly></td>
+			<td id="td_date">수정날짜 : </td>
 		</tr>
 		<tr>
 			<td><b>내용</b></td>
@@ -72,7 +101,7 @@
 	<table>
 	<tr>
 		<td width=600></td>
-		<td><input type="button" value="취소" OnClick="location.href='gongji_list.jsp'"></td>
+		<td><input type="button" value="취소" OnClick="location.href='gongji_list.jsp?current_page=1'"></td>
 		<td><input type="button" value="수정" OnClick="submitForm('write')"></td>
 		<td><input type="button" value="삭제" OnClick="submitForm('delete')"></td>
 	</tr>
