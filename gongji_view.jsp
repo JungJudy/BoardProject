@@ -9,6 +9,42 @@
 	<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/gongji_view.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(function() {
+		var now = new Date();
+		var year = now.getFullYear();
+		
+		var month = now.getMonth() + 1;
+		if (month < 10) {
+			month = "0" + month;
+		}
+		
+		var date = now.getDate();
+		if (date < 10) {
+			date = "0" + date;
+		}
+
+		var hours = now.getHours();
+		if (hours < 10) {
+			hours = "0" + hours;
+		}
+
+		var minutes = now.getMinutes();
+		if (minutes < 10) {
+			minutes = "0" + minutes;
+		}
+
+		var seconds = now.getSeconds();
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		}
+		var today = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+		
+		$("#comments_date").val(today);
+
+	});
+	</script>
 </head>
 <body>
 	<form method=post name='fm'>
@@ -49,17 +85,42 @@
 		out.println("</tr>");
 	}
 	rset.close();
-	stmt.close();
-	conn.close();
+	
 %>
 	</table>
-	<table>
+	<table id="button">
 		<tr>
 			<td width=550></td>
 			<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp?current_page=1'"></td>
 			<td><input type=button value="수정" OnClick="location.href='gongji_update.jsp?id=<%=id%>'"></td>
 		</tr>
 	</table>
-	</form>
+	
+<%	
+	Integer comments_is = 0;
+	ResultSet rset2 = stmt.executeQuery("select count(*) from comments;");
+	
+	while (rset2.next()) {
+		comments_is = rset2.getInt(1);
+	}
+
+	if (comments_is == 0) {
+		out.println("<p>댓글이 없습니다.</p>");
+	}
+	rset2.close();
+
+	
+	
+	stmt.close();
+	conn.close();
+%>
+<table id="comments">
+	<tr>
+		<td><input type="text" id="comments_user" placeholder="작성자를 입력해주세요">
+			<br><input type="text" id="comments_date"></td>
+		<td><textarea name="comments_content" id="comments_content" cols="50" rows="5"></textarea></td>
+	</tr>
+</table>
+</form>
 </body>
 </html>

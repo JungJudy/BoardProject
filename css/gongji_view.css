@@ -12,3 +12,18 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
+#comments_user, #comments_date {
+    border: none;
+}
+
+#comments_content {
+    outline: none;
+}
+
+
+#comments_date {
+    color: rgb(92, 91, 91);
+    outline: none;
+}

@@ -13,4 +13,5 @@ body {
 }
 input#date, input#id {
     border: none;
+    outline: none;
 }
