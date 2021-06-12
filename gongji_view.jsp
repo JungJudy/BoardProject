@@ -21,7 +21,7 @@
 	Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.76:3306/kopo37",                  
 					"root" , "kopoctc");
 	Statement stmt = conn.createStatement();
-	
+	stmt.execute("update gongji set viewCnt = viewCnt+1 where id=" + id + ";");
 	ResultSet rset = stmt.executeQuery("select * from gongji where id=" + id + ";");
 	
 	while(rset.next()) {
@@ -38,6 +38,10 @@
 		out.println("<tr>");
 		out.println("<td><b>일자</b></td>");
 		out.println("<td>" + rset.getString(3) + "</td>");
+		out.println("</tr>");
+		out.println("<tr>");
+		out.println("<td><b>조회수</b></td>");
+		out.println("<td>" + rset.getString(5) + "</td>");
 		out.println("</tr>");
 		out.println("<tr>");
 		out.println("<td><b>내용</b></td>");

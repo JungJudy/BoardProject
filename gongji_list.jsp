@@ -54,6 +54,7 @@
 		<th>번호</th>
 		<th>제목</th>
 		<th>등록일</th>
+		<th>조회수</th>
 	</tr>
 
 <%
@@ -118,6 +119,7 @@
 			out.println("<td width=300>" + rset.getInt(1) + "</td>");
 			out.println("<td width=500><a href='gongji_view.jsp?id="+rset.getInt(1)+"'>" + rset.getString(2) + "</td>");
 			out.println("<td width=500>" + rset.getString(3) + "</td>");
+			out.println("<td width=100>" + rset.getString(5) + "</td>");
 			out.println("<tr>");
 		}
 	
@@ -132,7 +134,7 @@
 
 <table cellspacing=1 width=600 border=0>
 	<tr>
-		<td width=500><input type="text" id="search" name="search" placeholder="제목 검색"><button onclick="search()">검색</button></td>
+		<td width=600><input type="text" id="search" name="search" placeholder="제목 검색"><button onclick="search()">검색</button></td>
 		<td><input type=button value="신규" id="new" OnClick="window.location='gongji_insert.jsp'"></td>
 	</tr>
 </table>
