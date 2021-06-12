@@ -13,11 +13,13 @@
 
 <script>
 	function submitForm(mode) {
-		if (document.getElementById("title").value == "") {
+		if ($("#title").val().replace(/\s/g,"").length == 0) {
 			alert("제목을 입력해주세요");
-			console.log(document.getElementById("content").value);
 			return false;
-		}  else {
+		} else if ($("#content").val().replace(/\s/g,"").length == 0) {
+			alert("내용을 입력해주세요");
+			return false;
+		} else {
 				fm.action = "gongji_write.jsp?key=INSERT";
 				fm.submit();
 			}
@@ -86,7 +88,7 @@
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea style='width:500px; height:250px;' name=content cols=70 rows=600 minlength="1" maxlength="1000" placeholder="내용을 입력해주세요"></textarea></td>
+				<td><textarea style='width:500px; height:250px;' name=content id="content" cols=70 rows=600 minlength="1" maxlength="1000" placeholder="내용을 입력해주세요"></textarea></td>
 			</tr>
 		</table>
 		<table>
