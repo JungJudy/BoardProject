@@ -44,6 +44,22 @@
 		$("#comments_date").val(today);
 
 	});
+
+	function submitCh() {
+		if ($("#comments_user").val().replace(/\s/g,"").length == 0) {
+			alert("작성자를 입력해주세요");
+			return false;
+		} else if ($("#comments_content").val().replace(/\s/g,"").length == 0) {
+			alert("댓글 내용을 입력해주세요");
+			return false;
+		} else {
+			co_form.action="gongji_comments.jsp";
+			co_form.submit();
+		}
+		
+	}
+	
+	
 	</script>
 </head>
 <body>
@@ -116,31 +132,38 @@
 		ResultSet rset3 = stmt.executeQuery("select * from comments where postid=" + id + ";");
 %>
 		<hr>
+		<form action="gongji_comments.jsp" method="post">
 		<table width="600">
 <%		
 		while (rset3.next()) {
 			out.println("<tr id='tr_comments'>");
 			out.println("<td id='co_user'>" + rset3.getString(3) + "<br><sapn id='co_date'>" + rset3.getString(5) + "</sapn></td>");
 			out.println("<td id='co_content'>" + rset3.getString(4) + "</td>");
+			out.println("<td id='co_delete'><input type='submit' id='co_delete_Btn' value='삭제'></td>");
 			out.println("</tr>");
+			out.println("<input type='hidden' name='comment_id' value='" + rset3.getString(1) + "'>");
 		}
 		rset3.close();
 		out.println("</table>");
+		out.println("</form>");
 		out.println("<hr>");
+		
 	}
 
 	stmt.close();
 	conn.close();
-%>			
-
-			<table id="comments">
-				<tr>
-					<td><input type="text" id="comments_user" placeholder="작성자를 입력해주세요">
-						<br><input type="text" id="comments_date"></td>
-					<td><textarea name="comments_content" id="comments_content" cols="50" rows="5" placeholder="욕설,비방X."></textarea></td>
-					<td id="td_comment_button"><span id="comment_button">입력</span></td>
-				</tr>
-			</table>
+%>		
+			<form name="co_form" method="post">
+				<table id="comments">
+					<input type="hidden" name="postid" id="postid" value="<%=id%>">
+					<tr>
+						<td><input type="text" name="comments_user" id="comments_user" placeholder="작성자를 입력해주세요">
+							<br><input type="text" id="comments_date"></td>
+						<td><textarea name="comments_content" id="comments_content" cols="50" rows="5" placeholder="욕설,비방X."></textarea></td>
+						<td id="td_comment_button"><input type="button" id="comment_button" value="입력" onclick="submitCh()"></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</section>
 </body>

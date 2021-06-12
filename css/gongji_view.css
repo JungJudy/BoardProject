@@ -46,6 +46,7 @@ textarea {
     padding: 5px;
     background-color: rgb(246, 247, 189);
     border-radius: 20%;
+    border: 1px solid rgb(246, 247, 189);
 }
 
 #tr_comments {
@@ -60,6 +61,7 @@ textarea {
 
 #co_content {
     padding-left: 10px;
+    width: 420px;
 }
 
 #co_user, #co_content {
@@ -71,4 +73,17 @@ textarea {
 #co_date {
     font-size: 12px;
     color: rgb(80, 80, 80);
+}
+
+#co_delete {
+    width: 30px;
+    text-align: right;
+}
+
+#co_delete_Btn {
+    font-size: 10px;
+    font-weight: 500;
+    font-style: italic;
+    border-style: none;
+    cursor: pointer;
 }
