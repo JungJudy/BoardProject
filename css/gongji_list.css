@@ -2,6 +2,11 @@ p, table, input, button, tr, td, a {
     font-family: 'Jua', sans-serif, 'ZCOOL KuaiLe', cursive ;
     }
 
+th {
+    border-bottom: 1px solid black;
+    color: rgb(247, 85, 85);
+}
+
 body {
     width: 100%;
     height: 100%;

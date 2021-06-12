@@ -62,7 +62,7 @@
             ResultSet rset = stmt.executeQuery("select * from gongji where title like '%" + title +"%' order by id desc;");
     %>
     <div class="table-outer">
-    <table width=650 border=1 cellspacing=0 cellpadding=5>
+    <table width=650 cellspacing=0 cellpadding=5>
         <tr id="tr_id">
             <th>번호</th>
             <th>제목</th>

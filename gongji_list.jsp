@@ -49,7 +49,7 @@
 	
 %>
 <div class="table-outer">
-<table cellspacing=1 width=600 border=1>
+<table cellspacing=1 width=600 id="table_one">
 	<tr id="tr_id">
 		<th>번호</th>
 		<th>제목</th>

@@ -47,8 +47,10 @@
 	</script>
 </head>
 <body>
-	<form method=post name='fm'>
-		<table width=650 border=1 cellspacing=0 cellpadding=5>
+	<section id="s1">
+		<div>
+			<form method=post name='fm'>
+				<table width=650 border=1 cellspacing=0 cellpadding=5>
 		
 <%
 	Integer id = Integer.parseInt(request.getParameter("id"));
@@ -87,40 +89,59 @@
 	rset.close();
 	
 %>
-	</table>
-	<table id="button">
-		<tr>
-			<td width=550></td>
-			<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp?current_page=1'"></td>
-			<td><input type=button value="수정" OnClick="location.href='gongji_update.jsp?id=<%=id%>'"></td>
-		</tr>
-	</table>
+				</table>
+				<table id="button">
+					<tr>
+						<td width=550></td>
+						<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp?current_page=1'"></td>
+						<td><input type=button value="수정" OnClick="location.href='gongji_update.jsp?id=<%=id%>'"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div>
 	
 <%	
 	Integer comments_is = 0;
-	ResultSet rset2 = stmt.executeQuery("select count(*) from comments;");
+	ResultSet rset2 = stmt.executeQuery("select count(*) from comments where postid=" + id + ";");
 	
 	while (rset2.next()) {
 		comments_is = rset2.getInt(1);
 	}
-
-	if (comments_is == 0) {
-		out.println("<p>댓글이 없습니다.</p>");
-	}
 	rset2.close();
 
-	
-	
+	if (comments_is == 0) {
+		out.println("<p>댓글이 없습니다.</p><hr>");
+	} else {
+		ResultSet rset3 = stmt.executeQuery("select * from comments where postid=" + id + ";");
+%>
+		<hr>
+		<table width="600">
+<%		
+		while (rset3.next()) {
+			out.println("<tr id='tr_comments'>");
+			out.println("<td id='co_user'>" + rset3.getString(3) + "<br><sapn id='co_date'>" + rset3.getString(5) + "</sapn></td>");
+			out.println("<td id='co_content'>" + rset3.getString(4) + "</td>");
+			out.println("</tr>");
+		}
+		rset3.close();
+		out.println("</table>");
+		out.println("<hr>");
+	}
+
 	stmt.close();
 	conn.close();
-%>
-<table id="comments">
-	<tr>
-		<td><input type="text" id="comments_user" placeholder="작성자를 입력해주세요">
-			<br><input type="text" id="comments_date"></td>
-		<td><textarea name="comments_content" id="comments_content" cols="50" rows="5"></textarea></td>
-	</tr>
-</table>
-</form>
+%>			
+
+			<table id="comments">
+				<tr>
+					<td><input type="text" id="comments_user" placeholder="작성자를 입력해주세요">
+						<br><input type="text" id="comments_date"></td>
+					<td><textarea name="comments_content" id="comments_content" cols="50" rows="5" placeholder="욕설,비방X."></textarea></td>
+					<td id="td_comment_button"><span id="comment_button">입력</span></td>
+				</tr>
+			</table>
+		</div>
+	</section>
 </body>
 </html>

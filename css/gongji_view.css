@@ -1,12 +1,15 @@
-p, table, input {
+p, table, input, textarea {
     font-family: 'Jua', sans-serif,'ZCOOL KuaiLe', cursive;
 }
 
-form {
+section#s1 {
     width: fit-content;
     margin: auto;
 }
 
+#s2 {
+    margin: auto;
+}
 body {
     display: flex;
     width: 100%;
@@ -26,4 +29,46 @@ body {
 #comments_date {
     color: rgb(92, 91, 91);
     outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+#td_comment_button {
+    color: rgb(92, 91, 91);
+    width: 50px;
+    text-align: right;
+}
+
+#comment_button {
+    cursor: pointer;
+    padding: 5px;
+    background-color: rgb(246, 247, 189);
+    border-radius: 20%;
+}
+
+#tr_comments {
+    border-bottom: 1px solid black;
+}
+
+#co_user {
+    width: 180px;
+    border-right: 1px solid rgb(92, 91, 91);
+    padding-top: 3px;
+}
+
+#co_content {
+    padding-left: 10px;
+}
+
+#co_user, #co_content {
+    font-size: 13px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+#co_date {
+    font-size: 12px;
+    color: rgb(80, 80, 80);
 }

@@ -39,6 +39,12 @@ body{
     height: fit-content;
     margin-top: 25%;
 }
+
+th {
+    border-bottom: 1px solid black;
+    color: rgb(247, 85, 85);;
+}
+
 #goToListBtn2 {
     border-style: none;
     font-size: 14px;
