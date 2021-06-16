@@ -86,4 +86,18 @@ textarea {
     font-style: italic;
     border-style: none;
     cursor: pointer;
+    width: 25px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
 }

@@ -43,3 +43,9 @@ a:link {
 a:visited {
     color: black;
 }
+
+#paging {
+    position: relative;
+    top: 350px;
+    left: 220px;
+}

@@ -59,7 +59,6 @@
 		
 	}
 	
-	
 	</script>
 </head>
 <body>
@@ -138,10 +137,10 @@
 		while (rset3.next()) {
 			out.println("<tr id='tr_comments'>");
 			out.println("<td id='co_user'>" + rset3.getString(3) + "<br><sapn id='co_date'>" + rset3.getString(5) + "</sapn></td>");
-			out.println("<td id='co_content'>" + rset3.getString(4) + "</td>");
-			out.println("<td id='co_delete'><input type='submit' id='co_delete_Btn' value='삭제'></td>");
+			out.println("<td id='co_content'>" + rset3.getString(4).replace("\r\n","<br>") + "</td>");
+			out.println("<td id='co_delete_Btn'><a href='gongji_delete_comment.jsp?commentId=" + rset3.getInt(1) + "&postid=" + rset3.getInt(2) + "'>삭제</a></td>");
 			out.println("</tr>");
-			out.println("<input type='hidden' name='comment_id' value='" + rset3.getString(1) + "'>");
+			out.println("<input type='hidden' name='comment_id' id='comment_id' value='" + rset3.getString(1) + "'>");
 		}
 		rset3.close();
 		out.println("</table>");

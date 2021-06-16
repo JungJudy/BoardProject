@@ -56,8 +56,10 @@
 		<th>등록일</th>
 		<th>조회수</th>
 	</tr>
-
+	
 <%
+	out.println("<div id='paging'>");
+
 	Integer totalCnt = gongji_is; //총게시글 수
 	Integer CntLIst = 10; //한 페이지에 표시될 게시글 수
 	Integer totalPage = totalCnt/CntLIst; //총 페이지 수
@@ -110,7 +112,10 @@
 
 	//끝페이지
 	out.println("<a href=\"?current_page=" + totalPage + "\" id='end'>   >>   </a>");
-	
+
+	out.println("</div>");
+%>
+<%
 
 	ResultSet rset = stmt.executeQuery("select * from gongji order by id desc limit " + ((current_page - 1) * CntLIst) + "," + CntLIst + ";");
 
@@ -141,6 +146,10 @@
 </div>
 <%
 	}
+
+
+
+	
 %>
 </body>
 </html>
